@@ -1,0 +1,49 @@
+Group,Nation,Confederation,Pot
+Group A,Italy,UEFA,1
+Group A,New Zealand,OFC,2
+Group A,Brazil,CONMEBOL,3
+Group A,Switzerland,UEFA,4
+Group B,Argentina,CONMEBOL,1
+Group B,Canada,CONCACAF,2
+Group B,Serbia,UEFA,3
+Group B,Costa Rica,CONCACAF,4
+Group C,Spain,UEFA,1
+Group C,South Korea,AFC,2
+Group C,Cameroon,CAF,3
+Group C,Ukraine,UEFA,4
+Group D,Nigeria,CAF,1
+Group D,Netherlands,UEFA,2
+Group D,Tunisia,CAF,3
+Group D,Japan,AFC,4
+Group E,Paraguay,CONMEBOL,1
+Group E,Senegal,CAF,2
+Group E,Ivory Coast,CAF,3
+Group E,Austria,UEFA,4
+Group F,Portugal,UEFA,1
+Group F,France,UEFA,2
+Group F,Poland,UEFA,3
+Group F,Qatar,AFC,4
+Group G,Algeria,CAF,1
+Group G,Panama,CONCACAF,2
+Group G,Croatia,UEFA,3
+Group G,USA,CONCACAF,4
+Group H,Denmark,UEFA,1
+Group H,Mexico,CONCACAF,2
+Group H,England,UEFA,3
+Group H,Peru,CONMEBOL,4
+Group I,Morocco,CAF,1
+Group I,Saudi Arabia,AFC,2
+Group I,Ecuador,CONMEBOL,3
+Group I,Colombia,CONMEBOL,4
+Group J,Sweden,UEFA,1
+Group J,Egypt,CAF,2
+Group J,Jamaica,CONCACAF,3
+Group J,UAE,AFC,4
+Group K,Uruguay,CONMEBOL,1
+Group K,Australia,AFC,2
+Group K,Germany,UEFA,3
+Group K,Scotland,UEFA,4
+Group L,Iran,AFC,1
+Group L,Mali,CAF,2
+Group L,Iraq,AFC,3
+Group L,Belgium,UEFA,4
