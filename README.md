@@ -2,7 +2,7 @@
 
 An interactive machine learning and statistical simulation engine predicting the outcome of the 2030 FIFA World Cup. The model uses a Dixon-Coles Bivariate Poisson engine alongside dynamic player metrics aggregated from rolling club and country match logs.
 
-🏆 **Live Demo:** [Deploy your Streamlit Cloud Link Here!]
+🏆 **Live Demo:** [https://fifa-world-cup-2030-simulator-dxswrwtz66vuxlbenlccem.streamlit.app/]
 
 ## Key Features
 * **Dixon-Coles Match Engine:** Custom-built Poisson model capturing low-scoring draws and clean sheet probability.
