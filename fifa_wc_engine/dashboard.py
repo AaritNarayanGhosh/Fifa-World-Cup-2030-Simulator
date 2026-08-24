@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import os
 import matplotlib.pyplot as plt
-import subprocess
 
 st.set_page_config(page_title="FIFA WC 2030 Simulation", page_icon="🏆", layout="wide")
 
@@ -41,6 +40,34 @@ results_df, squads_df, groups_df = load_data()
 
 st.title("FIFA World Cup 2030 AI Simulator")
 
+import sys
+sys.path.append(BASE_DIR)
+sys.path.append(os.path.join(BASE_DIR, 'src'))
+
+from src.simulation.draw_generator import DrawGenerator
+from src.simulation.monte_carlo_engine import VectorizedMonteCarloEngine
+
+def run_simulation_in_process(num_simulations):
+    # Paths
+    teams_path = os.path.join(BASE_DIR, 'data', 'processed', 'nation_strength_matrix.csv')
+    draw_path = os.path.join(BASE_DIR, 'data', 'processed', 'group_stage_draw.csv')
+    output_path = os.path.join(BASE_DIR, 'data', 'processed', 'monte_carlo_results.csv')
+    
+    engine = VectorizedMonteCarloEngine(num_simulations=num_simulations)
+    engine.load_data(teams_path, draw_path)
+    results = engine.run_tournaments()
+    
+    # Save results
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    results.to_csv(output_path, index=False)
+
+def redraw_groups_in_process():
+    input_path = os.path.join(BASE_DIR, 'data', 'processed', 'projected_48_teams.csv')
+    output_path = os.path.join(BASE_DIR, 'data', 'processed', 'group_stage_draw.csv')
+    
+    generator = DrawGenerator(input_path)
+    generator.save_draw(output_path)
+
 # Sidebar - Live Tuner
 with st.sidebar:
     st.header("⚙️ Simulation Tuner")
@@ -51,8 +78,8 @@ with st.sidebar:
     if st.button("Run Simulation Now"):
         with st.spinner(f"Running {sims} tournaments..."):
             try:
-                subprocess.run(['python', os.path.join(BASE_DIR, 'src', 'simulation', 'monte_carlo_engine.py')], check=True)
-                st.success(f"Completed {sims} simulations in ~0.6s!")
+                run_simulation_in_process(sims)
+                st.success(f"Completed {sims} simulations!")
                 st.cache_data.clear()
                 st.rerun()
             except Exception as e:
@@ -65,8 +92,8 @@ with st.sidebar:
     if st.button("Redraw Groups & Simulate"):
         with st.spinner("Redrawing groups and running simulations..."):
             try:
-                subprocess.run(['python', os.path.join(BASE_DIR, 'src', 'simulation', 'draw_generator.py')], check=True)
-                subprocess.run(['python', os.path.join(BASE_DIR, 'src', 'simulation', 'monte_carlo_engine.py')], check=True)
+                redraw_groups_in_process()
+                run_simulation_in_process(sims)
                 st.success("New groups drawn and simulated!")
                 st.cache_data.clear()
                 st.rerun()
